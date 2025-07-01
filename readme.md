@@ -1,4 +1,4 @@
-# RESPONSUP API example
+# RESPONSUM API example
 
 An example of how to integrate with the RESPONSUM API to accompany our online documentation
 
