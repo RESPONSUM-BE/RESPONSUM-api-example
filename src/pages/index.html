@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>RESPONSUM API example</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="main-body-wrapper">
+      <div class="actions-wrapper">
+        <h1>RESPONSUM API example</h1>
+        <div>
+          An example of how to integrate with the RESPONSUM API to accompany or
+          online documentation
+        </div>
+        <h2>GET /uuids/{amount}</h2>
+        <div>
+          Generate new UUIDS according to the Responsum format<br />
+          <button onClick="callGetUuids()">Call GET /uuids/{amount}</button>
+        </div>
+        <h2>Diagnostics</h2>
+        <div>
+          <button onClick="callPing()">Ping local server</button>
+          <button onClick="callClearLog()">Clear logs</button>
+        </div>
+      </div>
+      <div class="log-wrapper">
+        <div id="log-content" class="log-content">loading log...</div>
+      </div>
+    </div>
+  </body>
+</html>
