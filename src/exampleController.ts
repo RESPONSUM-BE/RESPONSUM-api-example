@@ -2,6 +2,9 @@ import { type Application, json } from 'express'
 import { Logger } from './utils/logger'
 import path from 'path'
 import { getUuids } from './operations/getUuids'
+import { getCountriesByFilter } from './operations/getCountriesByFilter'
+import { createNewIMS } from './operations/createNewIMS'
+import { updateIMS } from './operations/updateIMS'
 
 export function exampleController(app: Application, logger: Logger) {
   app.use(json())
@@ -78,9 +81,59 @@ export function exampleController(app: Application, logger: Logger) {
   app.post('/getUuids', (_req, res) => {
     wrapAsync(async () => {
       try {
-        await getUuids(logger, 3)
+        const amount = 3
+        const uuids = await getUuids(logger, amount)
+        logger.info(`GET /uuids/${amount} `, { result: uuids })
       } catch (error) {
         logger.error(`POST /getUuids failed`, { error })
+      }
+      res.status(200).send()
+    })
+  })
+
+  app.post('/getCountriesByFilter', (_req, res) => {
+    wrapAsync(async () => {
+      try {
+        const countries = await getCountriesByFilter('Belgium', logger)
+        logger.info(`GET /country with a filter `, {
+          result: countries,
+        })
+      } catch (error) {
+        logger.error(`POST /getCountriesByFilter failed`, { error })
+      }
+      res.status(200).send()
+    })
+  })
+
+  app.post('/createNewIMS', (_req, res) => {
+    wrapAsync(async () => {
+      try {
+        const createResult = await createNewIMS(logger)
+        logger.info(
+          `POST /create for information-management-system including a link to a country `,
+          {
+            result: createResult,
+          }
+        )
+      } catch (error) {
+        logger.error(`POST /createNewIMS failed`, { error })
+      }
+      res.status(200).send()
+    })
+  })
+
+  app.post('/updateIMS', (_req, res) => {
+    wrapAsync(async () => {
+      try {
+        const createResult = await updateIMS(logger)
+        logger.info(
+          `PATCH /update for information-management-system, updating the description and the country link `,
+          {
+            result: createResult,
+          }
+        )
+      } catch (error) {
+        logger.error(`POST /updateIMS failed`, { error })
       }
       res.status(200).send()
     })

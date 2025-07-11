@@ -12,11 +12,59 @@
           An example of how to integrate with the RESPONSUM API to accompany or
           online documentation
         </div>
+
+        <h2>(optional) Configure webhook</h2>
+        <div>
+          If you want to see the webhook in action, you can configure a new
+          webhook under settings > integrations > webhooks with the public url
+          to this page /webhook<br />
+          For any POST request to that endpoint, the body will be logged.<br />
+          So if you configure that webhook to listen to
+          information-management-system subsystem and the Item created and Item
+          base data updated actions, you'll see the webhook message come in as
+          you run the below operations.
+        </div>
+
         <h2>GET /uuids/{amount}</h2>
         <div>
           Generate new UUIDS according to the Responsum format<br />
-          <button onClick="callGetUuids()">Call GET /uuids/{amount}</button>
+          <button onClick="callGetUuids()">
+            Call src\operations\getUuids.ts
+          </button>
         </div>
+
+        <h2>GET /country filtered on name</h2>
+        <div>
+          Get a country model<br />
+          Using param-filter we can pass in a JSON stringified object of which
+          each property must match exactly with the model we're filtering for<br />
+          In the next operation we'll use this when creating a new
+          information-management-system<br />
+          <button onClick="callGetCountriesByFilter()">
+            Call src\operations\getCountriesByFilter.ts
+          </button>
+        </div>
+
+        <h2>POST /create</h2>
+        <div>
+          Create one or more models and their links<br />
+          In this operation we'll create a new information-management-system
+          with a link to an existing country<br />
+          <button onClick="callCreateNewIMS()">
+            Call src\operations\createNewIMS.ts
+          </button>
+        </div>
+
+        <h2>PATCH /update</h2>
+        <div>
+          Update one or more models and their links<br />
+          In this operation we'll lookup the IMS we created in the previous
+          operation and then update the description and the country link<br />
+          <button onClick="callUpdateIMS()">
+            Call src\operations\updateIMS.ts
+          </button>
+        </div>
+
         <h2>Diagnostics</h2>
         <div>
           <button onClick="callPing()">Ping local server</button>

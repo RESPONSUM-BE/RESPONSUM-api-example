@@ -42,6 +42,15 @@ function callClearLog() {
 function callGetUuids() {
   activateServerFunction('getUuids')
 }
+function callGetCountriesByFilter() {
+  activateServerFunction('getCountriesByFilter')
+}
+function callCreateNewIMS() {
+  activateServerFunction('createNewIMS')
+}
+function callUpdateIMS() {
+  activateServerFunction('updateIMS')
+}
 
 // helpers
 function activateServerFunction(endpoint: string) {

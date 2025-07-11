@@ -25,8 +25,6 @@ export async function getUuids(
   if (error != null) {
     logger.error(`Got an error for GET /uuids/${amount}`, { error })
     return undefined
-  } else if (data != null) {
-    logger.info(`GET /uuids/${amount} `, { result: data })
-    return data
   }
+  return data
 }
