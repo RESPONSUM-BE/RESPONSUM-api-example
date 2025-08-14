@@ -45,7 +45,7 @@
           </button>
         </div>
 
-        <h2>POST /create</h2>
+        <h2>POST /create simple example</h2>
         <div>
           Create one or more models and their links<br />
           In this operation we'll create a new information-management-system
@@ -55,13 +55,21 @@
           </button>
         </div>
 
-        <h2>PATCH /update</h2>
+        <h2>PATCH /update simple example</h2>
         <div>
           Update one or more models and their links<br />
           In this operation we'll lookup the IMS we created in the previous
           operation and then update the description and the country link<br />
           <button onClick="callUpdateIMS()">
             Call src\operations\updateIMS.ts
+          </button>
+        </div>
+
+        <h2>POST /create user account with permission</h2>
+        <div>
+          Create a normal (promoted user) user-account and permissions for it<br />
+          <button onClick="callCreateNewUserWithPermissions()">
+            Call src\operations\createNewUserWithPermissions.ts
           </button>
         </div>
 

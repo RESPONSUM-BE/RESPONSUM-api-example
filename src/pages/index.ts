@@ -51,6 +51,9 @@ function callCreateNewIMS() {
 function callUpdateIMS() {
   activateServerFunction('updateIMS')
 }
+function callCreateNewUserWithPermissions() {
+  activateServerFunction('createNewUserWithPermissions')
+}
 
 // helpers
 function activateServerFunction(endpoint: string) {

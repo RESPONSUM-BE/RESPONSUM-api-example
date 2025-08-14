@@ -5,6 +5,7 @@ import { getUuids } from './operations/getUuids'
 import { getCountriesByFilter } from './operations/getCountriesByFilter'
 import { createNewIMS } from './operations/createNewIMS'
 import { updateIMS } from './operations/updateIMS'
+import { createNewUserWithPermissions } from './operations/createNewUserWithPermissions'
 
 export function exampleController(app: Application, logger: Logger) {
   app.use(json())
@@ -134,6 +135,20 @@ export function exampleController(app: Application, logger: Logger) {
         )
       } catch (error) {
         logger.error(`POST /updateIMS failed`, { error })
+      }
+      res.status(200).send()
+    })
+  })
+
+  app.post('/createNewUserWithPermissions', (_req, res) => {
+    wrapAsync(async () => {
+      try {
+        const createResult = await createNewUserWithPermissions(logger)
+        logger.info(`POST /create for user-account with permissions `, {
+          result: createResult,
+        })
+      } catch (error) {
+        logger.error(`POST /createNewUserWithPermissions failed`, { error })
       }
       res.status(200).send()
     })
